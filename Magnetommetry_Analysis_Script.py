@@ -75,7 +75,7 @@ def B_from_lower_peak(f_measured):
     def mismatch(B):
         lower, _ = frequencies_fullsolution(B)
         return lower - f_measured
-    optimized_B = brentq(mismatch, 0.0, 30.0)
+    optimized_B = brentq(mismatch, 0.0, 30.0) #up to 30 B, because see the plot, after that point there's multiple possible solutions!
     return optimized_B
 
 def B_from_upper_peak(f_measured):
