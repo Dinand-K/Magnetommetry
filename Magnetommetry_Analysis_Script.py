@@ -327,7 +327,7 @@ fig.savefig("fig1_esr_vs_B.pdf", bbox_inches="tight")
 ###FIGURE 2: MEASURED B COMPARED WITH BOTH MODELS###
  
 # the z values we draw the model lines for
-z_line = np.linspace(21, 55, 400)      # 400 values from 21 to 55 mm
+z_line = np.linspace(21, 60, 400)      # 400 values from 21 to 60 mm
  
 # the two models along that line
 B_line_cyl = B_cylinder(z_line)
@@ -407,10 +407,14 @@ bottom.errorbar(z_measured, ratio_dip, yerr=ratio_dip_error,
                 markerfacecolor="white", markeredgewidth=0.9,
                 label="point dipole")
  
+# theory: cylinder divided by dipole (where the dipole points should lie if the cylinder is right)
+bottom.plot(z_line, B_line_cyl / B_line_dip, color=orange, linestyle="--", linewidth=1.0,
+            label="theory: cylinder / dipole")
+ 
 # axes and legend
 bottom.set_ylabel(r"$B_\mathrm{meas}/B_\mathrm{model}$")
 bottom.set_xlabel(r"distance from magnet centre to diamond $z$ (mm), incl. 1 mm offset")
-bottom.set_xlim(21, 55)
+bottom.set_xlim(21, 60)
 bottom.legend(fontsize=legend_size, frameon=False, loc="upper right")
  
 # the "(b)" in the bottom right corner (ha="right": the text ends at that point)
